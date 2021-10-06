@@ -1,0 +1,110 @@
+﻿<Window x:Class="MainApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wv="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:local="clr-namespace:MainApp.Views"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Height="600" Width="800" 
+        WindowState="{Binding MainWindowState}"
+        fw:AcrylicWindow.Enabled="True"
+        fw:AcrylicWindow.AcrylicWindowStyle="None"
+        MinWidth="300"
+        MinHeight="300"
+        >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0"
+                   Background="Transparent"
+                   MouseLeftButtonDown="MainWindow_MouseLeftButtonDown"
+                   >
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    Width="30"
+                    Style="{StaticResource ButtonAccentRevealStyle}"
+                    Content="🚫"
+                    FontFamily="Consolas"
+                    Background="Transparent"
+                    Command="{Binding ExitApp}">
+                
+            </Button>
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    Width="30"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    Content="⬜"
+                    FontFamily="Consolas"
+                    Background="Transparent"
+                    Command="{Binding ChangeSizeCmd}"
+                    />
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    Width="30"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    Content="🔄"
+                    FontFamily="Consolas"
+                    Background="Transparent"
+                    Command="{Binding ReloadCmd}"
+                    />
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    Width="30"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    Content="▶"
+                    FontFamily="Consolas"
+                    Background="Transparent"
+                    Command="{Binding GoForward}"
+                    />
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    Width="30"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    Content="◀"
+                    FontFamily="Consolas"
+                    Background="Transparent"
+                    Command="{Binding GoBack}"
+                    />
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    Width="30"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    Content="🏠"
+                    FontFamily="Consolas"
+                    Background="Transparent"
+                    Command="{Binding ToHome}"
+                    />
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    Width="30"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    Content="一"
+                    FontFamily="Consolas"
+                    Background="Transparent"
+                    Command="{Binding ToMinus}"
+                    />
+            <!-- Title -->
+            <TextBlock DockPanel.Dock="Right"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Background="Transparent"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       Text=" ☁ "
+                       FontFamily="Consolas"
+                       Margin="10, 0, 10, 0"
+                       />
+        </DockPanel>
+
+        <Frame Grid.Row="1" Content="{Binding MainWebView}"/>
+
+
+
+    </Grid>
+    
+</Window>

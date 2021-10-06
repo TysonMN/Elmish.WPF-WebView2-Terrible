@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "0ITthvwYJblq2d/6u9DxoOEm5fKnD6sBiQyMAq3xegeT4tvIPPD11mFt7xrHlIo+sWnZQiuRw7XpLOVF7tnNLQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Ricky\\source\\repos\\MainApp\\MainApp\\MainApp.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ricky\\.nuget\\packages\\elmish\\3.1.0\\elmish.3.1.0.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\elmish.wpf\\4.0.0-beta-42\\elmish.wpf.4.0.0-beta-42.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.0.0\\microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\microsoft.extensions.logging\\2.0.0\\microsoft.extensions.logging.2.0.0.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.6\\microsoft.extensions.logging.abstractions.3.1.6.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\microsoft.extensions.options\\2.0.0\\microsoft.extensions.options.2.0.0.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\microsoft.extensions.primitives\\2.0.0\\microsoft.extensions.primitives.2.0.0.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\microsoft.web.webview2\\1.0.1018-prerelease\\microsoft.web.webview2.1.0.1018-prerelease.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\serilog\\2.11.0-dev-01371\\serilog.2.11.0-dev-01371.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\serilog.extensions.logging\\3.0.2-dev-10289\\serilog.extensions.logging.3.0.2-dev-10289.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\serilog.sinks.console\\4.0.1-dev-00876\\serilog.sinks.console.4.0.1-dev-00876.nupkg.sha512",
+    "C:\\Users\\Ricky\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.4.0\\system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

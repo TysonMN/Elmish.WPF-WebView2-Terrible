@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Ricky\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages;C:\Program Files (x86)\Microsoft\Xamarin\NuGet\</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.11.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="C:\Users\Ricky\.nuget\packages\" />
+    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
+    <SourceRoot Include="C:\Program Files (x86)\Microsoft\Xamarin\NuGet\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgSerilog Condition=" '$(PkgSerilog)' == '' ">C:\Users\Ricky\.nuget\packages\serilog\2.11.0-dev-01371</PkgSerilog>
+    <PkgSerilog_Sinks_Console Condition=" '$(PkgSerilog_Sinks_Console)' == '' ">C:\Users\Ricky\.nuget\packages\serilog.sinks.console\4.0.1-dev-00876</PkgSerilog_Sinks_Console>
+    <PkgSerilog_Extensions_Logging Condition=" '$(PkgSerilog_Extensions_Logging)' == '' ">C:\Users\Ricky\.nuget\packages\serilog.extensions.logging\3.0.2-dev-10289</PkgSerilog_Extensions_Logging>
+    <PkgMicrosoft_Web_WebView2 Condition=" '$(PkgMicrosoft_Web_WebView2)' == '' ">C:\Users\Ricky\.nuget\packages\microsoft.web.webview2\1.0.1018-prerelease</PkgMicrosoft_Web_WebView2>
+    <PkgFSharp_Core Condition=" '$(PkgFSharp_Core)' == '' ">C:\Users\Ricky\.nuget\packages\fsharp.core\5.0.0</PkgFSharp_Core>
+    <PkgElmish_WPF Condition=" '$(PkgElmish_WPF)' == '' ">C:\Users\Ricky\.nuget\packages\elmish.wpf\4.0.0-beta-42</PkgElmish_WPF>
+  </PropertyGroup>
+</Project>
