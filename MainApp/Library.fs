@@ -1,11 +1,12 @@
 ﻿module MainApp.Program
+
 open Serilog
 open Serilog.Extensions.Logging
 open Elmish.WPF
 open System
 open System.Windows
-open System.Windows.Input
 open Microsoft.Web.WebView2.Wpf;
+
 
 type Model =
     { 
