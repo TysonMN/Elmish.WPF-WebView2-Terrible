@@ -3,10 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:wv="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
-        xmlns:local="clr-namespace:MainApp.Views"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Height="600" Width="800" 
         WindowState="{Binding MainWindowState}"
@@ -33,7 +30,6 @@
                     FontFamily="Consolas"
                     Background="Transparent"
                     Command="{Binding ExitApp}">
-                
             </Button>
             <Button DockPanel.Dock="Right"
                     HorizontalAlignment="Right"
@@ -103,8 +99,5 @@
 
         <Frame Grid.Row="1" Content="{Binding MainWebView}"/>
 
-
-
     </Grid>
-    
 </Window>
