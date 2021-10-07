@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MainApp.fsproj" />
+    <ProjectReference Include="..\MainApp\MainApp.fsproj" />
   </ItemGroup>
 
 </Project>

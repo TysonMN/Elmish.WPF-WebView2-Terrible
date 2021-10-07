@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MainApp", "MainApp.fsproj", "{81D5A3B8-197C-481A-8A29-1758B380DF6B}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MainApp", "MainApp\MainApp.fsproj", "{81D5A3B8-197C-481A-8A29-1758B380DF6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainApp.Views", "MainApp.Views\MainApp.Views.csproj", "{E37E1270-7AA6-4BD1-882C-9AACCA5996ED}"
 EndProject
