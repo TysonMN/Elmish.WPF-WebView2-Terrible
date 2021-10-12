@@ -1,7 +1,8 @@
-module MainApp.Program
+﻿module MainApp.Program
 
 open Serilog
 open Serilog.Extensions.Logging
+open Elmish
 open Elmish.WPF
 open System
 open System.Windows
@@ -11,60 +12,66 @@ open Microsoft.Web.WebView2.Wpf;
 type Model =
     { 
         MainWindowState:WindowState
-        MainWebView:WebView2
+        Uri: Uri
     }
 
 type Msg =
     | ExitApp
     | ChangeState of WindowState
     | Reload
-    | ToHome
     | GoBack
     | GoForward
+    | SetUri of Uri
+    | CmdException of exn
+
+[<RequireQualifiedAccess>]
+type Cmd =
+    | Reload
+    | GoBack
+    | GoForward
+
+let homeUri = Uri "https://www.bing.com"
 
 let init =
     {
         MainWindowState = WindowState.Normal
-        MainWebView = 
-            let foo = new WebView2(Source = Uri "https://www.bing.com") 
-            foo.CoreWebView2InitializationCompleted.Add(fun e -> 
-                foo.CoreWebView2.NewWindowRequested.Add(fun e -> 
-                    e.Handled <- true
-                    foo.Source <- Uri e.Uri))
-            foo
+        Uri = homeUri
     }
 
 let update msg m = 
     match msg with 
     | ChangeState s -> { m with MainWindowState = s }, []
     | ExitApp -> m, []
-    | Reload -> m.MainWebView.Reload(); m, []
-    | ToHome -> m.MainWebView.Source <- Uri "https://www.bing.com"; m, []
-    | GoBack -> m.MainWebView.GoBack(); m, []
-    | GoForward -> m.MainWebView.GoForward(); m, []
+    | Reload -> m, [Cmd.Reload]
+    | GoBack -> m, [Cmd.GoBack]
+    | GoForward -> m, [Cmd.GoForward]
+    | SetUri uri -> { m with Uri = uri }, []
+    | CmdException _ -> m, [] // TODO: consider showing the user an error message
 
-let toCmd _ = []
+let toCmd (webView: WebView2) = function
+    | Cmd.Reload -> Cmd.OfFunc.attempt webView.Reload () CmdException
+    | Cmd.GoBack -> Cmd.OfFunc.attempt webView.GoBack () CmdException
+    | Cmd.GoForward -> Cmd.OfFunc.attempt webView.GoForward () CmdException
 
 let bindings () : Binding<Model, Msg> list = 
     [
-        "ExitApp" |> Binding.cmdParam (fun obj -> Environment.Exit 0; ExitApp)
+        "ExitApp" |> Binding.cmdParam (fun _ -> Environment.Exit 0; ExitApp)
         "MainWindowState" |> Binding.oneWay (fun m -> m.MainWindowState)
         "ChangeSizeCmd" |> Binding.cmd (fun m -> 
             match m.MainWindowState with 
-            | WindowState.Normal -> ChangeState (WindowState.Maximized)
-            | _ -> ChangeState (WindowState.Normal))
-        "ToMinus" |> Binding.cmd(fun m -> ChangeState (WindowState.Minimized))
-        "MainWebView" |> Binding.oneWay(fun m -> m.MainWebView)
+            | WindowState.Normal -> ChangeState WindowState.Maximized
+            | _ -> ChangeState WindowState.Normal)
+        "ToMinus" |> Binding.cmd (fun _ -> ChangeState WindowState.Minimized)
         "ReloadCmd" |> Binding.cmd Reload
-        "ToHome" |> Binding.cmd ToHome
+        "ToHome" |> Binding.cmd (SetUri homeUri)
         "GoBack" |> Binding.cmd GoBack
         "GoForward" |> Binding.cmd GoForward
+        "WebViewSource" |> Binding.twoWay((fun m -> m.Uri), SetUri)
     ]
 
 let designVm = ViewModel.designInstance init (bindings ())
 
-let main window =
-
+let main window webView =
     let logger =
         LoggerConfiguration()
             .MinimumLevel.Override("Elmish.WPF.Update", Events.LogEventLevel.Verbose)
@@ -73,6 +80,6 @@ let main window =
             .WriteTo.Console()
             .CreateLogger()
     
-    WpfProgram.mkProgramWithCmdMsg (fun () -> init, []) update bindings toCmd
+    WpfProgram.mkProgramWithCmdMsg (fun () -> init, []) update bindings (toCmd webView)
     |> WpfProgram.withLogger (new SerilogLoggerFactory(logger))
     |> WpfProgram.startElmishLoop window

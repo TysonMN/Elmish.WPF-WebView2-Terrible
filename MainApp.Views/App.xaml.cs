@@ -13,7 +13,8 @@ namespace MainApp.Views
         private void StartElmish(object sender, EventArgs e)
         {
             this.Activated -= StartElmish;
-            Program.main(MainWindow);
+            var window = (MainWindow) MainWindow;
+            Program.main(window, window.WebView);
         }
 
     }

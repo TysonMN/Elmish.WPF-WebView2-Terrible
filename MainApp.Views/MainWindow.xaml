@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
         Height="600" Width="800" 
         WindowState="{Binding MainWindowState}"
@@ -97,7 +98,10 @@
                        />
         </DockPanel>
 
-        <Frame Grid.Row="1" Content="{Binding MainWebView}"/>
+        <wv2:WebView2 Name="WebView"
+                      Grid.Row="1"
+                      Source="{Binding WebViewSource, Mode=TwoWay}"
+                      />
 
     </Grid>
 </Window>
