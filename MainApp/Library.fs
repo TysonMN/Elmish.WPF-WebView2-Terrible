@@ -1,4 +1,4 @@
-﻿module MainApp.Program
+module MainApp.Program
 
 open Serilog
 open Serilog.Extensions.Logging
@@ -36,12 +36,14 @@ let init =
 
 let update msg m = 
     match msg with 
-    | ChangeState s -> { m with MainWindowState = s }
-    | ExitApp -> m
-    | Reload -> m.MainWebView.Reload(); m
-    | ToHome -> m.MainWebView.Source <- Uri "https://www.bing.com"; m
-    | GoBack -> m.MainWebView.GoBack(); m
-    | GoForward -> m.MainWebView.GoForward(); m
+    | ChangeState s -> { m with MainWindowState = s }, []
+    | ExitApp -> m, []
+    | Reload -> m.MainWebView.Reload(); m, []
+    | ToHome -> m.MainWebView.Source <- Uri "https://www.bing.com"; m, []
+    | GoBack -> m.MainWebView.GoBack(); m, []
+    | GoForward -> m.MainWebView.GoForward(); m, []
+
+let toCmd _ = []
 
 let bindings () : Binding<Model, Msg> list = 
     [
@@ -71,6 +73,6 @@ let main window =
             .WriteTo.Console()
             .CreateLogger()
     
-    WpfProgram.mkSimple (fun () -> init) update bindings
+    WpfProgram.mkProgramWithCmdMsg (fun () -> init, []) update bindings toCmd
     |> WpfProgram.withLogger (new SerilogLoggerFactory(logger))
     |> WpfProgram.startElmishLoop window
